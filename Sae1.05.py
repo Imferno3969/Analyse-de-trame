@@ -9,7 +9,7 @@ with open('Sae1.05.txt', 'r') as f: # Lecture de chaque ligne du fichier
     lines = f.readlines()
     
     
-with open('Sae1.05.csv','w',newline='') as fichiercsv: #créé le fichier .csv
+with open('Sae1.05.csv','w',newline='') as fichiercsv: #cr≈Ω≈Ω le fichier .csv
     writer=csv.writer(fichiercsv)
     writer.writerow(['Temps;Adresse IP d envoie;Vers;Adresse IP de destination;Flags;seq;ack;win;val;ecr;length']) #Les grands titres   
     
@@ -98,19 +98,19 @@ plt.xlabel("IP path")
 plt.ylabel("Count")
 plt.savefig('mon_graphique800.png')
 plt.show()
-with open("Paquet-fragmenté.txt","w") as f1 :
+with open("Paquet-fragmente.txt","w") as f1 :
     # Ouverture du fichier de sortie de capture de paquets
     with open("Sae1.05.txt", "r") as f2:
         # Lecture de chaque ligne du fichier
         for lines in f2:
-            # Recherche de la chaîne "Flags [" dans la ligne
+            # Recherche de la cha‚Äùne "Flags [" dans la ligne
             if "Flags [" in lines:
-                # Utilisation de l'expression régulière pour extraire les informations de fragmentation
+                # Utilisation de l'expression r≈Ωguli¬ère pour extraire les informations de fragmentation
                 match = re.search(r"Flags \[(.*)\],", lines)
                 flags = match.group(1)
-                # Vérifie si le paquet est fragmenté
+                # V≈Ωrifie si le paquet est fragment≈Ω
                 if "F" in flags:
-                    f1.write("Paquet Fragmenté : \n"+lines)
+                    f1.write("Paquet Fragmente : \n"+lines)
 with open("Compteur-chemin.txt","w") as f2 :            
     for i in liste :
         if i == previous_i :
