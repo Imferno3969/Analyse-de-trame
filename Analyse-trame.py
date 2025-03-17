@@ -9,7 +9,7 @@ with open('Sae1.05.txt', 'r') as f: # Lecture de chaque ligne du fichier
     lines = f.readlines()
     
     
-with open('Sae1.05.csv','w',newline='') as fichiercsv: #crŽŽ le fichier .csv
+with open('Sae1.05.csv','w',newline='') as fichiercsv: #cree le fichier .csv
     writer=csv.writer(fichiercsv)
     writer.writerow(['Temps;Adresse IP d envoie;Vers;Adresse IP de destination;Flags;seq;ack;win;val;ecr;length']) #Les grands titres   
     
@@ -62,7 +62,7 @@ with open('Sae1.05.csv','w',newline='') as fichiercsv: #crŽŽ le fichier .csv
 for i in liste :
     liste.count(i)
     
-# Create a dictionary to store the number of occurrences of each IP path
+# Crée un dictionnaire et stock les chemins IP
 paths = {}
 for i in liste:
     if i not in paths:
@@ -70,11 +70,11 @@ for i in liste:
     else:
         paths[i] += 1
 paths = {k: v for k, v in paths.items() if v >= 200}
-# Extract the IP paths and their counts as separate lists
+# Extrait les chemins IP et les comptes
 ip_paths = list(paths.keys())
 counts = list(paths.values())
 
-# Create a bar chart
+#Creation graph1
 plt.bar(ip_paths, counts)
 plt.xlabel("IP path")
 plt.ylabel("Count")
@@ -88,11 +88,11 @@ for i in liste:
     else:
         paths2[i] += 1
 paths2 = {k: v for k, v in paths2.items() if v >= 800}
-# Extract the IP paths and their counts as separate lists
+# Extrait les chemins IP et les comptes
 ip_paths2 = list(paths2.keys())
 counts2 = list(paths2.values())
 
-# Create a bar chart
+# Cree graph 2
 plt.bar(ip_paths2, counts2)
 plt.xlabel("IP path")
 plt.ylabel("Count")
@@ -103,12 +103,12 @@ with open("Paquet-fragmente.txt","w") as f1 :
     with open("Sae1.05.txt", "r") as f2:
         # Lecture de chaque ligne du fichier
         for lines in f2:
-            # Recherche de la cha”ne "Flags [" dans la ligne
+            # Recherche de la chaine "Flags [" dans la ligne
             if "Flags [" in lines:
-                # Utilisation de l'expression rŽgulire pour extraire les informations de fragmentation
+                # Utilisation de l'expression reguliere pour extraire les informations de fragmentation
                 match = re.search(r"Flags \[(.*)\],", lines)
                 flags = match.group(1)
-                # VŽrifie si le paquet est fragmentŽ
+                # Verifie si le paquet est fragmente
                 if "F" in flags:
                     f1.write("Paquet Fragmente : \n"+lines)
 with open("Compteur-chemin.txt","w") as f2 :            
